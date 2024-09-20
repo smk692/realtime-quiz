@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>실시간 퀴즈 서비스</title>
+    <!-- CSS 파일 로드 -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- D3.js 및 기타 라이브러리 로드 -->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <!-- SockJS 및 STOMP 라이브러리 로드 -->
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+</head>
+<body>
+
+<!-- 사용자명 입력 페이지 -->
+<div id="username-page" class="username-page">
+    <div class="form-container">
+        <h1>실시간 퀴즈 서비스에 오신 것을 환영합니다!</h1>
+        <form id="usernameForm">
+            <input type="text" id="name" placeholder="이름을 입력하세요." autocomplete="off" required />
+            <button type="submit" id="enterChat">입장하기</button>
+        </form>
+    </div>
+</div>
+
+<!-- 메인 페이지 -->
+<div id="main-page" class="main-page" style="display: none;">
+    <div id="main-container" class="main-container">
+        <!-- 상단 영역 -->
+        <div id="top-container" class="top-container">
+            <!-- 퀴즈 영역 (왼쪽 상단) -->
+            <div id="quiz-container" class="quiz-container">
+                <h2>퀴즈</h2>
+                <div id="problem-content" class="problem-content"></div>
+                <div id="options-container" class="options-container"></div>
+                <div id="navigation-container" class="navigation-container"></div>
+            </div>
+            <!-- 채팅 영역 (오른쪽 상단) -->
+            <div id="chat-container" class="chat-container">
+                <h2>채팅</h2>
+                <div id="messageArea" class="messageArea"></div>
+                <form id="messageForm" class="messageForm">
+                    <input type="text" id="message" placeholder="메시지를 입력하세요." autocomplete="off" />
+                    <button type="submit" id="send">전송</button>
+                </form>
+            </div>
+        </div>
+        <!-- 하단 영역 -->
+        <div id="bottom-container" class="bottom-container">
+            <!-- 점수판 영역 (왼쪽 하단) -->
+            <div id="scoreboard-container" class="scoreboard-container">
+                <h2>점수판</h2>
+                <div id="scoreboard" class="scoreboard"></div>
+            </div>
+            <!-- 단어 빈도수 그래프 영역 (오른쪽 하단) -->
+            <div id="visualization-container" class="visualization-container">
+                <h2>단어 빈도수 그래프</h2>
+                <div id="visualization" class="visualization"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript 파일 로드 -->
+<script src="/js/visualization.js"></script>
+<script src="/js/quiz.js"></script>
+<script src="/js/scoreboard.js"></script>
+<script src="/js/chat.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

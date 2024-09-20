@@ -1,0 +1,322 @@
+/* 기본 스타일 초기화 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f4f7fb;
+}
+
+/* 일괄적으로 적용되는 h2 스타일 */
+h2 {
+    color: #007bff;
+    font-size: 20px; /* h2 제목 크기 */
+    text-align: center;
+}
+
+/* 메인 페이지 레이아웃 */
+#main-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* 전체 화면의 높이를 채움 */
+}
+
+#main-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* 상단과 하단을 나누는 레이아웃 */
+#top-container, #bottom-container {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    flex-grow: 1; /* 상단과 하단이 균등하게 배치되도록 설정 */
+}
+
+/* 상단 컨테이너: 퀴즈와 채팅 영역 */
+#top-container {
+    display: flex;
+    flex-direction: row; /* 퀴즈와 채팅 영역을 좌우로 배치 */
+    height: 50%;
+    gap: 20px; /* 좌우 간격 설정 */
+}
+
+#bottom-container {
+    display: flex;
+    flex-direction: row; /* 점수판과 단어 빈도수 그래프를 좌우로 배치 */
+    height: 50%;
+    gap: 20px;
+}
+
+/* 퀴즈와 채팅 영역 */
+#quiz-container, #chat-container {
+    flex: 1;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    justify-content: space-between;
+}
+
+/* 퀴즈, 채팅, 점수판, 단어 빈도수 그래프 영역의 공통 폰트 크기 */
+#quiz-container, #chat-container, #scoreboard-container, #visualization-container {
+    font-size: 14px; /* 퀴즈 영역과 동일한 폰트 크기 */
+    color: #333; /* 텍스트 색상 */
+}
+
+/* 퀴즈 영역 안의 문제 텍스트 */
+#problem-content {
+    font-size: 14px;
+    padding: 10px;
+}
+
+/* 퀴즈 옵션 */
+#options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5px; /* 옵션 간 간격 */
+    padding: 10px;
+}
+
+#options-container button {
+    background-color: #f8f9fa;
+    border: 1px solid #007bff;
+    color: #333;
+    padding: 10px;
+    font-size: 14px; /* 버튼 텍스트 크기 */
+    border-radius: 6px;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+#options-container button:hover {
+    background-color: #e9ecef;
+    border-color: #0056b3;
+    color: #007bff;
+}
+
+#options-container button.selected-option {
+    background-color: #007bff !important;
+    color: white !important;
+    border-color: #0056b3 !important;
+}
+
+/* 채팅 영역 */
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px; /* 퀴즈와 동일한 폰트 크기 */
+}
+
+#messageArea {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    border-bottom: 2px solid #28a745;
+}
+
+#messageForm {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+#message {
+    flex: 1;
+    padding: 12px;
+    font-size: 14px; /* 동일한 폰트 크기 */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#send {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#send:hover {
+    background-color: #218838;
+}
+
+/* 점수판과 단어 빈도수 그래프 */
+#scoreboard-container, #visualization-container {
+    flex: 1;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px; /* 퀴즈와 동일한 폰트 크기 */
+}
+
+/* 점수판 스타일 */
+#scoreboard {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    width: 100%;
+}
+
+#scoreboard table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#scoreboard th, #scoreboard td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+#scoreboard th {
+    background-color: #e9ecef;
+}
+
+#scoreboard tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* 단어 빈도수 그래프 영역 */
+#visualization-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#visualization {
+    width: 100%;
+    height: 100%;
+}
+
+#visualization svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* 내비게이션 버튼 컨테이너 스타일 */
+#navigation-container {
+    display: flex;
+    justify-content: center; /* 버튼들을 중앙 정렬 */
+    align-items: center;
+    gap: 10px; /* 버튼 간의 간격 */
+    flex-wrap: wrap; /* 버튼이 화면 너비를 넘어가면 자동 줄바꿈 */
+}
+
+/* 내비게이션 버튼 스타일 */
+.quiz-nav-btn, .quiz-submit-btn {
+    background-color: #28a745;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    padding: 12px 25px; /* 버튼 크기 조정 */
+    border-radius: 5px;
+    margin: 5px; /* 버튼들 간의 여백 추가 */
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    flex: 1; /* 버튼이 균등하게 배치되도록 설정 */
+    max-width: 150px; /* 버튼의 최대 너비 설정 */
+}
+
+/* 버튼 hover 상태 */
+.quiz-nav-btn:hover, .quiz-submit-btn:hover {
+    background-color: #218838;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 이전 버튼 */
+.prev-btn {
+    background-color: #6c757d;
+}
+
+.prev-btn:hover {
+    background-color: #5a6268;
+}
+
+/* 제출 버튼 */
+.quiz-submit-btn {
+    background-color: #007bff;
+}
+
+.quiz-submit-btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 정답 표시를 위한 클래스 */
+/* 정답일 때 버튼 배경색 */
+.correct-answer {
+    background-color: #28a745 !important; /* 초록색 */
+    color: white !important;
+    border-color: #218838 !important;
+}
+
+/* 오답일 때 버튼 배경색 */
+.incorrect-answer {
+    background-color: #dc3545 !important; /* 빨간색 */
+    color: white !important;
+    border-color: #c82333 !important;
+}
+
+/* 정답/오답 텍스트 스타일 */
+.correct {
+    color: #00FF00FF; /* 초록색 */
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.incorrect {
+    color: #E10000FF; /* 빨간색 */
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+/* 버튼 비활성화 스타일 */
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* 스크롤바 스타일 */
+#options-container::-webkit-scrollbar,
+#messageArea::-webkit-scrollbar,
+#scoreboard::-webkit-scrollbar {
+    width: 6px;
+}
+
+#options-container::-webkit-scrollbar-thumb,
+#messageArea::-webkit-scrollbar-thumb,
+#scoreboard::-webkit-scrollbar-thumb {
+    background-color: #007bff;
+    border-radius: 10px;
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 800px) {
+    #top-container, #bottom-container {
+        flex-direction: column;
+    }
+
+    #visualization {
+        max-width: 300px;
+        max-height: 300px;
+    }
+}
